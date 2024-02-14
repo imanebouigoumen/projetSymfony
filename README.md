@@ -75,5 +75,18 @@ on a ajouté au fichier 'services.yaml' : cebe\markdown\Markdown: ~
 
 et on a modifié le code de la fonction index du fichier LeconController.php
 
+QUESTION 7:
+
+pour créer l'entity user :
+
+symfony console make:user 
+
+symfony console make:entity User (on a ajouté les champs nom et prénom) 
+
+modification du fichier 'User.php' pour ajouter le role 'professeur' par défaut.
+
+symfony console m:mig
+
+symfony console d:m:m
 
 
