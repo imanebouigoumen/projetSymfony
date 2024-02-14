@@ -40,3 +40,21 @@ symfony console make:migration
 
 symfony console doctrine:migrations:migrate
 
+QUESTION 3:
+
+symfony composer require fakerphp/faker
+
+on a installé le package fixture:
+
+symfony composer require orm-fixtures --dev
+
+symfony console make:fixture
+
+on a modifié le fichier 'LeconFixtures.php' pour générer des données fictives dans la fixture.
+
+et on a lancé la commande:
+
+symfony console doctrine:fixtures:load
+
+
+
