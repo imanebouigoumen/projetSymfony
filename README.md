@@ -56,5 +56,12 @@ et on a lancé la commande:
 
 symfony console doctrine:fixtures:load
 
+QUESTION 4:
+
+symfony console make:crud lecon
+
+modification des templates/lecon pour inclure bootstrap et du styling
+
+
 
 
