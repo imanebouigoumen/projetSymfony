@@ -60,7 +60,11 @@ QUESTION 4:
 
 symfony console make:crud lecon
 
-modification des templates/lecon pour inclure bootstrap et du styling
+modification des templates/lecon pour inclure bootstrap et du styling.
+
+QUESTION 5:
+
+ajout d'une barre de navigation à 'base.html.twig'
 
 
 
