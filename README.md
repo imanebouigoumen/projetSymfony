@@ -66,6 +66,7 @@ QUESTION 5:
 
 ajout d'une barre de navigation à 'base.html.twig'
 
+
 QUESTION 6:
 
 symfony composer require cebe/markdown
@@ -73,5 +74,6 @@ symfony composer require cebe/markdown
 on a ajouté au fichier 'services.yaml' : cebe\markdown\Markdown: ~
 
 et on a modifié le code de la fonction index du fichier LeconController.php
+
 
 
