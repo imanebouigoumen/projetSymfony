@@ -31,3 +31,12 @@ symfony composer require symfony/webpack-encore-bundle
 npm install
 
 npm install bootstrap
+
+QUESTION 2:
+
+symfony console make:entity lecon (insertion des champs 'nom' et 'description')
+
+symfony console make:migration
+
+symfony console doctrine:migrations:migrate
+
