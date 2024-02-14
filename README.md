@@ -87,6 +87,16 @@ modification du fichier 'User.php' pour ajouter le role 'professeur' par défaut
 
 symfony console m:mig
 
-symfony console d:m:m
+symfony console doctrine:migrations:migrate
+
+QUESTION 8:
+
+création de la relation "ManyToOne" avec la commande : 
+
+symfony console make:entity Lecon (on ajoute la relation avec l'entité User) et ensuite on fait les migrations : 
+
+symfony console make:migration
+
+symfony console doctrine:migrations:migrate
 
 

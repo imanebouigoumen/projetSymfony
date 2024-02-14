@@ -19,6 +19,10 @@ class Lecon
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'lecons')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?user $profLecon = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class Lecon
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getProfLecon(): ?user
+    {
+        return $this->profLecon;
+    }
+
+    public function setProfLecon(?user $profLecon): static
+    {
+        $this->profLecon = $profLecon;
 
         return $this;
     }
