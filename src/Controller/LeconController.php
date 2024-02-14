@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Lecon;
 use App\Form\LeconType;
 use App\Repository\LeconRepository;
+use cebe\markdown\Markdown;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,17 @@ use Symfony\Component\Routing\Attribute\Route;
 class LeconController extends AbstractController
 {
     #[Route('/', name: 'app_lecon_index', methods: ['GET'])]
-    public function index(LeconRepository $leconRepository): Response
+    public function index(LeconRepository $leconRepository, Markdown $markdown): Response
     {
+        $lecons=$leconRepository->findAll();
+        $parsedLecons=[];
+        foreach ($lecons as $lecon){
+            $parseLecon = $lecon;
+            $parseLecon->setDescription($markdown->parse($lecon->getDescription()));
+            $parsedLecons[]=$parseLecon;
+        }
         return $this->render('lecon/index.html.twig', [
-            'lecons' => $leconRepository->findAll(),
+            'lecons' => $parsedLecons
         ]);
     }
 

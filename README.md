@@ -60,8 +60,18 @@ QUESTION 4:
 
 symfony console make:crud lecon
 
-modification des templates/lecon pour inclure bootstrap et du styling
+modification des templates/lecon pour inclure bootstrap et du styling.
 
+QUESTION 5:
 
+ajout d'une barre de navigation à 'base.html.twig'
+
+QUESTION 6:
+
+symfony composer require cebe/markdown
+
+on a ajouté au fichier 'services.yaml' : cebe\markdown\Markdown: ~
+
+et on a modifié le code de la fonction index du fichier LeconController.php
 
 
