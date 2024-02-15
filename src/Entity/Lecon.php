@@ -21,7 +21,7 @@ class Lecon
 
     #[ORM\ManyToOne(inversedBy: 'lecons')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $profLecon = null;
+    private ?User $profLecon = null;
 
     public function getId(): ?int
     {
@@ -52,12 +52,12 @@ class Lecon
         return $this;
     }
 
-    public function getProfLecon(): ?user
+    public function getProfLecon(): ?User
     {
         return $this->profLecon;
     }
 
-    public function setProfLecon(?user $profLecon): static
+    public function setProfLecon(?User $profLecon): static
     {
         $this->profLecon = $profLecon;
 

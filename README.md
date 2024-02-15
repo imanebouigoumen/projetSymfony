@@ -6,7 +6,7 @@ SAIDI NOOR LYLIA
 
 BAHHOUS HOUSSAMEDDINE
 
-QUESTION 1:
+### QUESTION 1:
 
 docker-compose build
 
@@ -32,7 +32,7 @@ npm install
 
 npm install bootstrap
 
-QUESTION 2:
+### QUESTION 2:
 
 symfony console make:entity lecon (insertion des champs 'nom' et 'description')
 
@@ -40,7 +40,7 @@ symfony console make:migration
 
 symfony console doctrine:migrations:migrate
 
-QUESTION 3:
+### QUESTION 3:
 
 symfony composer require fakerphp/faker
 
@@ -56,18 +56,18 @@ et on a lancé la commande:
 
 symfony console doctrine:fixtures:load
 
-QUESTION 4:
+### QUESTION 4:
 
 symfony console make:crud lecon
 
 modification des templates/lecon pour inclure bootstrap et du styling.
 
-QUESTION 5:
+### QUESTION 5:
 
 ajout d'une barre de navigation à 'base.html.twig'
 
 
-QUESTION 6:
+### QUESTION 6:
 
 symfony composer require cebe/markdown
 
@@ -75,7 +75,7 @@ on a ajouté au fichier 'services.yaml' : cebe\markdown\Markdown: ~
 
 et on a modifié le code de la fonction index du fichier LeconController.php
 
-QUESTION 7:
+### QUESTION 7: (petite modif)
 
 pour créer l'entity user :
 
@@ -89,7 +89,14 @@ symfony console m:mig
 
 symfony console doctrine:migrations:migrate
 
-QUESTION 8:
+(modif : symfony console make:auth et on a modifié la fonction onAthenticationSuccess, 
+
+symfony console make:migrations 
+
+symfony console doctrine:migrations:migrate
+) 
+
+### QUESTION 8:
 
 création de la relation "ManyToOne" avec la commande : 
 
