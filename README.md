@@ -94,6 +94,7 @@ symfony console doctrine:migrations:migrate
 symfony console make:migrations 
 
 symfony console doctrine:migrations:migrate
+
 ) 
 
 ### QUESTION 8:

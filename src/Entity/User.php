@@ -38,12 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Lecon::class, mappedBy: 'profLecon')]
     private Collection $lecons;
 
-    public function __construct()
-    {
-        // Initialiser les rôles avec le rôle par défaut "ROLE_PROFESSEUR"
-        $this->roles = ['ROLE_PROFESSEUR'];
-        $this->lecons = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -79,7 +74,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_PROF';
 
         return array_unique($roles);
     }
