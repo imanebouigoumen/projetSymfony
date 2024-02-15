@@ -38,6 +38,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Lecon::class, mappedBy: 'profLecon')]
     private Collection $lecons;
 
+    public function __construct()
+    {
+        $this->lecons=new ArrayCollection();
+    }
+
 
 
     public function getId(): ?int

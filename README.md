@@ -116,5 +116,9 @@ on a ajouté cette ligne ( #[IsGranted('ROLE_PROF')] )
 
  l'ajout de ( #[IsGranted('ROLE_PROF')] ) pour la modification (fonction edit) et la suppression (fonction delete)
 
+### QUESTION 11:
+
+on a modifié LeconFixtures.php pour générer des données fictifs pour l'utilisateur (des noms, prénoms et email) afin de faciliter les tests.
+
 
 
