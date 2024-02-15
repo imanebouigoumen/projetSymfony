@@ -112,4 +112,9 @@ symfony console doctrine:migrations:migrate
 
 on a ajouté cette ligne ( #[IsGranted('ROLE_PROF')] )
 
+### QUESTION 10:
+
+ l'ajout de ( #[IsGranted('ROLE_PROF')] ) pour la modification (fonction edit) et la suppression (fonction delete)
+
+
 

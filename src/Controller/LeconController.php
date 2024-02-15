@@ -60,6 +60,7 @@ class LeconController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_PROF')]
     #[Route('/{id}/edit', name: 'app_lecon_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Lecon $lecon, EntityManagerInterface $entityManager): Response
     {
@@ -78,6 +79,7 @@ class LeconController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_PROF')]
     #[Route('/{id}', name: 'app_lecon_delete', methods: ['POST'])]
     public function delete(Request $request, Lecon $lecon, EntityManagerInterface $entityManager): Response
     {
