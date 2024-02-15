@@ -29,10 +29,22 @@
 
                 <div class="text-center mt-4">
                     <a class="btn btn-primary mr-3" href="{{ path('app_lecon_index') }}">Back to List</a>
-                    <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Edit</a>
                 </div>
+
+                    {% if is_granted('ROLE_PROF') %}
+                    <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Edit</a>
+                    {% endif %}
+
+                {% if estinscrit %}
+                    <a href="{{ path('app_lecon_desinscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">Se Désinscrire</a>
+                {% else %}
+                    <a href="{{ path('app_lecon_inscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">S'inscrire</a>
+                {% endif %}
             </div>
         </div>
+
+
+
 
         {{ include('lecon/_delete_form.html.twig') }}
     </div>

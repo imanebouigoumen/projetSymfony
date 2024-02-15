@@ -136,3 +136,12 @@ symfony console doctrine:migrations:migrate
 
 symfony console doctrine:fixtures:load
 
+### QUESTION 13:
+
+symfony console make:controller Mesinscriptions
+
+symfony console doctrine:fixtures:load
+
+modification du Controlleur Mesinscriptions et des templates pour voir les listes des élèves et des inscriptions
+
+

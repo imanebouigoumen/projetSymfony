@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Leçon Inscription {% endblock %}
+
+{% block body %}
+
+    <h1> Liste Participants </h1>
+    <ul>
+        {% for participant in participants %}
+            <li>{{ participant.nom }} {{ participant.prenom }}</li>
+        {% else %}
+            <li>Aucun participants à la Leçon</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

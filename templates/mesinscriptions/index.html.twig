@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mes inscriptions{% endblock %}
+
+{% block body %}
+
+    <h1> Mes Inscriptions </h1>
+    <ul>
+        {% for lecon in lecons %}
+            <li>
+                <ul>
+                    <li> {{ lecon.nom }} </li>
+                    <li> {{ lecon.description }} </li>
+                </ul>
+            </li>
+        {% else %}
+            <li>Aucune inscriptions realisées </li>
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}

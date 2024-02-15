@@ -17,6 +17,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/lecon')]
 class LeconController extends AbstractController
 {
+    #[IsGranted('ROLE_PROF')]
     #[Route('/', name: 'app_lecon_index', methods: ['GET'])]
     public function index(LeconRepository $leconRepository, Markdown $markdown): Response
     {
@@ -58,6 +59,7 @@ class LeconController extends AbstractController
     {
         return $this->render('lecon/show.html.twig', [
             'lecon' => $lecon,
+            'estinscrit'=> $lecon->getInscriptions()->contains($this->getUser())
         ]);
     }
 
@@ -94,12 +96,16 @@ class LeconController extends AbstractController
 
     #[IsGranted('ROLE_PROF')]
     #[Route('/inscrire/{id}', name: 'app_lecon_inscrire')]
-    public function inscrire(Lecon $lecon):Response
+    public function inscrire(Lecon $lecon, EntityManagerInterface $entityManager):Response
     {
         $user =$this ->getUser();
         if($user instanceof User){
             $lecon -> addInscription($user);
             $user -> addListelecon($lecon);
+            $entityManager->persist($user);
+            $entityManager->persist($lecon);
+            $entityManager->flush();
+
         }
 
         return $this -> render('lecon/show.html.twig',[
@@ -110,17 +116,28 @@ class LeconController extends AbstractController
 
     #[IsGranted('ROLE_PROF')]
     #[Route('/desinscrire/{id}', name: 'app_lecon_desinscrire')]
-    public function desinscrire(Lecon $lecon):Response
+    public function desinscrire(Lecon $lecon, EntityManagerInterface $entityManager):Response
     {
         $user =$this ->getUser();
         if($user instanceof User){
             $lecon -> removeInscription($user);
             $user -> removeListelecon($lecon);
+            $entityManager->persist($user);
+            $entityManager->persist($lecon);
+            $entityManager->flush();
         }
 
         return $this -> render('lecon/show.html.twig',[
             "lecon" =>$lecon,
             "estinscrit" => false
         ]);
+    }
+    #[Route('/liste/{id}', name: 'app_lecon_liste', methods: ['GET'])]
+    public function voirlisteinscrit(Lecon $lecon) :Response
+    {
+        return $this ->render('lecon/listeparticipants.html.twig', [
+            'participants' => $lecon ->getInscriptions()
+        ]);
+
     }
 }
