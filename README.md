@@ -144,4 +144,7 @@ symfony console doctrine:fixtures:load
 
 modification du Controlleur Mesinscriptions et des templates pour voir les listes des élèves et des inscriptions
 
+### QUESTION 14:
+
+on a embelli les templates avec quelques petits changement
 

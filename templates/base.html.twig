@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 56px; /* La hauteur de la barre de navigation */
+        }
+        .navbar {
+            background-color: #f8f9fa; /* Couleur de fond de la barre de navigation */
+        }
+        .navbar-brand {
+            font-weight: bold; /* Police en gras pour la marque */
+        }
+        .nav-link {
+            color: #333; /* Couleur du texte des liens */
+        }
+        /* Mettez ici vos propres styles CSS personnalisés */
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('app_lecon_index') }}">Les Lecons</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="{{ path('app_lecon_index') }}">Les Lecons</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('app_lecon_index') }}">Home </a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_lecon_index') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_register') }}">Register</a>
@@ -23,17 +40,18 @@
                     <a class="nav-link" href="{{ path('app_mesinscriptions') }}">Mes inscriptions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ path('app_login') }}">Logout</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">Logout</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ path("app_login") }}">Login</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">Login</a>
                 </li>
-
             </ul>
         </div>
-    </nav>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    </div>
+</nav>
+<div class="container mt-4">
+    {% block body %}{% endblock %}
+</div>
+</body>
 </html>
+
