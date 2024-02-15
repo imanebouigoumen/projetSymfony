@@ -8,6 +8,7 @@ use App\Form\LeconType;
 use App\Repository\LeconRepository;
 use cebe\markdown\Markdown;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,10 +39,15 @@ class LeconController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $lecon = new Lecon();
+        $prof= $this->getUser();
         $form = $this->createForm(LeconType::class, $lecon);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($prof instanceof User){
+                $lecon->setProfLecon($prof);
+                $prof->addLecon($lecon);
+            }
             $entityManager->persist($lecon);
             $entityManager->flush();
 
@@ -94,7 +100,7 @@ class LeconController extends AbstractController
         return $this->redirectToRoute('app_lecon_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[IsGranted('ROLE_PROF')]
+    #[IsGranted('ROLE_ELEVE')]
     #[Route('/inscrire/{id}', name: 'app_lecon_inscrire')]
     public function inscrire(Lecon $lecon, EntityManagerInterface $entityManager):Response
     {
@@ -114,7 +120,7 @@ class LeconController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_PROF')]
+    #[IsGranted('ROLE_ELEVE')]
     #[Route('/desinscrire/{id}', name: 'app_lecon_desinscrire')]
     public function desinscrire(Lecon $lecon, EntityManagerInterface $entityManager):Response
     {
@@ -132,6 +138,7 @@ class LeconController extends AbstractController
             "estinscrit" => false
         ]);
     }
+    #[IsGranted('ROLE_PROF')]
     #[Route('/liste/{id}', name: 'app_lecon_liste', methods: ['GET'])]
     public function voirlisteinscrit(Lecon $lecon) :Response
     {

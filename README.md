@@ -148,3 +148,10 @@ modification du Controlleur Mesinscriptions et des templates pour voir les liste
 
 on a embelli les templates avec quelques petits changement
 
+### QUESTION 15:
+
+symfony console make:crud User 
+
+modification des fichiers User.php et templates/user pour respecter les roles ADMIN, PROF et ELEVE, un prof est un ADMIN, il a la possibilité d'ajouter et de supprimer des profs ainsi que la promotion d'un autre prof à un ADMIN.
+
+

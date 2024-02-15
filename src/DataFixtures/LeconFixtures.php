@@ -30,6 +30,7 @@ class LeconFixtures extends Fixture
             $user -> setNom($faker->lastName)
                 ->setPrenom($faker->firstName)
                 ->setEmail($faker->email)->setPassword($this->hasher ->hashPassword($user,"secret"))
+                ->setRoles(['ROLE_PROF'])
             ;
             $users [] =$user;
             $manager->persist($user);

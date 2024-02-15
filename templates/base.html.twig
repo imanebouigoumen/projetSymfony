@@ -36,9 +36,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_register') }}">Register</a>
                 </li>
+                {% if is_granted('ROLE_ELEVE') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_mesinscriptions') }}">Mes inscriptions</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_login') }}">Logout</a>
                 </li>

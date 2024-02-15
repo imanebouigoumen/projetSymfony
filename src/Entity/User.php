@@ -37,10 +37,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\OneToMany(targetEntity: Lecon::class, mappedBy: 'profLecon')]
+    #[ORM\OneToMany(targetEntity: Lecon::class, mappedBy: 'profLecon',cascade: ["remove"])]
     private Collection $lecons;
 
-    #[ORM\ManyToMany(targetEntity: Lecon::class, mappedBy: 'inscriptions')]
+    #[ORM\ManyToMany(targetEntity: Lecon::class, mappedBy: 'inscriptions',cascade: ["remove"])]
     private Collection $listelecons;
 
     public function __construct()
@@ -85,7 +85,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_PROF';
 
         return array_unique($roles);
     }
