@@ -154,4 +154,6 @@ symfony console make:crud User
 
 modification des fichiers User.php et templates/user pour respecter les roles ADMIN, PROF et ELEVE, un prof est un ADMIN, il a la possibilité d'ajouter et de supprimer des profs ainsi que la promotion d'un autre prof à un ADMIN.
 
+### QUESTION 16:
 
+on a séparé le site réservé au prof et celui réservé au public en gérant les droits d'accès aux pages, modification du fichier UserController.php et template/lecon.

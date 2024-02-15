@@ -28,7 +28,9 @@
                             <td>{{ lecon.description }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ path('app_lecon_show', {'id': lecon.id}) }}">Show</a>
-                                <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Edit</a>
+                                {% if is_granted('ROLE_PROF') %}
+                                    <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Edit</a>
+                                {% endif %}
                             </td>
                         </tr>
                     {% else %}

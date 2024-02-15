@@ -10,10 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 #[Route('/admin')]
 class UserController extends AbstractController
 {
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -22,6 +25,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -43,6 +47,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -51,6 +56,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -69,6 +75,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -80,6 +87,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_index');
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/upgrade/{id}', name: 'app_user_upgrade', methods: ['GET'])]
     public function upgrade(User $prof, EntityManagerInterface $entityManager): Response
     {

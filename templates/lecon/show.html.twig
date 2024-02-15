@@ -33,11 +33,12 @@
                     {% if is_granted('ROLE_PROF') %}
                         <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Edit</a>
                     {% endif %}
-
-                    {% if estinscrit %}
-                        <a href="{{ path('app_lecon_desinscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">Se Désinscrire</a>
-                    {% else %}
-                        <a href="{{ path('app_lecon_inscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">S'inscrire</a>
+                    {% if is_granted('ROLE_ELEVE') %}
+                        {% if estinscrit %}
+                            <a href="{{ path('app_lecon_desinscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">Se Désinscrire</a>
+                        {% else %}
+                            <a href="{{ path('app_lecon_inscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">S'inscrire</a>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
