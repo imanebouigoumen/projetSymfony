@@ -120,5 +120,19 @@ on a ajouté cette ligne ( #[IsGranted('ROLE_PROF')] )
 
 on a modifié LeconFixtures.php pour générer des données fictifs pour l'utilisateur (des noms, prénoms et email) afin de faciliter les tests.
 
+### QUESTION 12:
 
+création de l'inscription et désinscription dans le fichier LeconController.php
+
+inclusion de la relation ManyToMany entre User et Lecon.
+
+symfony console make:registration-form
+
+symfony console make:entity  (pour modifier les champs de l'entité lecon)
+
+symfony console make:mig
+
+symfony console doctrine:migrations:migrate
+
+symfony console doctrine:fixtures:load
 

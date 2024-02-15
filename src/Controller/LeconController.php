@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Lecon;
+use App\Entity\User;
 use App\Form\LeconType;
 use App\Repository\LeconRepository;
 use cebe\markdown\Markdown;
@@ -89,5 +90,37 @@ class LeconController extends AbstractController
         }
 
         return $this->redirectToRoute('app_lecon_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[IsGranted('ROLE_PROF')]
+    #[Route('/inscrire/{id}', name: 'app_lecon_inscrire')]
+    public function inscrire(Lecon $lecon):Response
+    {
+        $user =$this ->getUser();
+        if($user instanceof User){
+            $lecon -> addInscription($user);
+            $user -> addListelecon($lecon);
+        }
+
+        return $this -> render('lecon/show.html.twig',[
+            "lecon" =>$lecon,
+            "estinscrit" => true
+        ]);
+    }
+
+    #[IsGranted('ROLE_PROF')]
+    #[Route('/desinscrire/{id}', name: 'app_lecon_desinscrire')]
+    public function desinscrire(Lecon $lecon):Response
+    {
+        $user =$this ->getUser();
+        if($user instanceof User){
+            $lecon -> removeInscription($user);
+            $user -> removeListelecon($lecon);
+        }
+
+        return $this -> render('lecon/show.html.twig',[
+            "lecon" =>$lecon,
+            "estinscrit" => false
+        ]);
     }
 }

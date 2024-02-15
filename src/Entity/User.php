@@ -6,10 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -38,9 +40,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Lecon::class, mappedBy: 'profLecon')]
     private Collection $lecons;
 
+    #[ORM\ManyToMany(targetEntity: Lecon::class, mappedBy: 'inscriptions')]
+    private Collection $listelecons;
+
     public function __construct()
     {
         $this->lecons=new ArrayCollection();
+        $this->listelecons = new ArrayCollection();
     }
 
 
@@ -164,6 +170,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($lecon->getProfLecon() === $this) {
                 $lecon->setProfLecon(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lecon>
+     */
+    public function getListelecons(): Collection
+    {
+        return $this->listelecons;
+    }
+
+    public function addListelecon(Lecon $listelecon): static
+    {
+        if (!$this->listelecons->contains($listelecon)) {
+            $this->listelecons->add($listelecon);
+            $listelecon->addInscription($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListelecon(Lecon $listelecon): static
+    {
+        if ($this->listelecons->removeElement($listelecon)) {
+            $listelecon->removeInscription($this);
         }
 
         return $this;
