@@ -75,7 +75,7 @@ on a ajouté au fichier 'services.yaml' : cebe\markdown\Markdown: ~
 
 et on a modifié le code de la fonction index du fichier LeconController.php
 
-### QUESTION 7: (petite modif)
+### QUESTION 7:
 
 pour créer l'entity user :
 
@@ -88,6 +88,7 @@ modification du fichier 'User.php' pour ajouter le role 'professeur' par défaut
 symfony console m:mig
 
 symfony console doctrine:migrations:migrate
+
 
 (modif : symfony console make:auth et on a modifié la fonction onAthenticationSuccess, 
 
@@ -106,5 +107,9 @@ symfony console make:entity Lecon (on ajoute la relation avec l'entité User) et
 symfony console make:migration
 
 symfony console doctrine:migrations:migrate
+
+### QUESTION 9:
+
+on a ajouté cette ligne ( #[IsGranted('ROLE_PROF')] )
 
 
