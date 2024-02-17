@@ -10,6 +10,7 @@ use cebe\markdown\Markdown;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -18,10 +19,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/lecon')]
 class LeconController extends AbstractController
 {
-    #[IsGranted('ROLE_PROF')]
+
     #[Route('/', name: 'app_lecon_index', methods: ['GET'])]
-    public function index(LeconRepository $leconRepository, Markdown $markdown): Response
+    public function index(LeconRepository $leconRepository, Markdown $markdown,Security $security): Response
     {
+        if (!$security->isGranted('ROLE_PROF') && !$security->isGranted('ROLE_ELEVE')) {
+            return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
+
+        }
         $lecons=$leconRepository->findAll();
         $parsedLecons=[];
         foreach ($lecons as $lecon){

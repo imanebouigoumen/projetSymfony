@@ -3,11 +3,11 @@
 {% block title %}Edit Lecon{% endblock %}
 
 {% block body %}
-    <h1>Edit Lecon</h1>
+    <h1>Modifier la leçon</h1>
 
     {{ include('lecon/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a class="btn btn-primary" href="{{ path('app_lecon_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('app_lecon_index') }}">Retour à la liste</a>
 
     {{ include('lecon/_delete_form.html.twig') }}
 {% endblock %}

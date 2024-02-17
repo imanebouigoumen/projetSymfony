@@ -6,6 +6,8 @@ SAIDI NOOR LYLIA
 
 BAHHOUS HOUSSAMEDDINE
 
+
+
 ### QUESTION 1:
 
 docker-compose build
@@ -118,7 +120,9 @@ on a ajouté cette ligne ( #[IsGranted('ROLE_PROF')] )
 
 ### QUESTION 11:
 
-on a modifié LeconFixtures.php pour générer des données fictifs pour l'utilisateur (des noms, prénoms et email) afin de faciliter les tests.
+on a modifié LeconFixtures.php pour générer des données fictifs 
+
+pour l'utilisateur (des noms, prénoms et email) afin de faciliter les tests.
 
 ### QUESTION 12:
 
@@ -142,7 +146,9 @@ symfony console make:controller Mesinscriptions
 
 symfony console doctrine:fixtures:load
 
-modification du Controlleur Mesinscriptions et des templates pour voir les listes des élèves et des inscriptions
+modification du Controlleur Mesinscriptions et des templates pour voir les listes des élèves et des 
+
+inscriptions
 
 ### QUESTION 14:
 
@@ -152,8 +158,18 @@ on a embelli les templates avec quelques petits changement
 
 symfony console make:crud User 
 
-modification des fichiers User.php et templates/user pour respecter les roles ADMIN, PROF et ELEVE, un prof est un ADMIN, il a la possibilité d'ajouter et de supprimer des profs ainsi que la promotion d'un autre prof à un ADMIN.
+modification des fichiers User.php et templates/user pour respecter les roles ADMIN, PROF et ELEVE
+
+, un prof est un ADMIN, il a la possibilité d'ajouter et de supprimer des profs ainsi 
+
+que la promotion d'un autre prof à un ADMIN.
 
 ### QUESTION 16:
 
-on a séparé le site réservé au prof et celui réservé au public en gérant les droits d'accès aux pages, modification du fichier UserController.php et template/lecon.
+on a séparé le site réservé au prof et celui réservé au public en gérant les droits d'accès aux pages,
+
+modification du fichier UserController.php et template/lecon.
+
+### QUESTION 17:
+
+On a embellis l'application en utilisant bootstap et css,modifié un peu le controleur .

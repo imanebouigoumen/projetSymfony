@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container py-5">
-        <h1 class="text-center mb-4">Lesson Details</h1>
+        <h1 class="text-center mb-4">Détails de la leçon</h1>
 
         <div class="card">
             <div class="card-body">
@@ -28,23 +28,29 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a class="btn btn-primary mr-3" href="{{ path('app_lecon_index') }}">Back to List</a>
+                    <a class="btn btn-primary mr-3" href="{{ path('app_lecon_index') }}">Retour à la liste</a>
 
                     {% if is_granted('ROLE_PROF') %}
-                        <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Edit</a>
+                        <a class="btn btn-warning" href="{{ path('app_lecon_edit', {'id': lecon.id}) }}">Modifier</a>
                     {% endif %}
+                    {% if is_granted('ROLE_PROF') %}
+                        <a class="btn btn-warning" href="{{ path('app_lecon_liste', {'id': lecon.id}) }}">Afficher Participants</a>
+                    {% endif %}
+
+
                     {% if is_granted('ROLE_ELEVE') %}
                         {% if estinscrit %}
-                            <a href="{{ path('app_lecon_desinscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">Se Désinscrire</a>
+                            <a href="{{ path('app_lecon_desinscrire', {'id': lecon.id}) }}" class="btn btn-primary mr-3">Se Désinscrire</a>
                         {% else %}
-                            <a href="{{ path('app_lecon_inscrire', {'id': lecon.id}) }}" class="btn btn-primary btn-sm">S'inscrire</a>
+                            <a href="{{ path('app_lecon_inscrire', {'id': lecon.id}) }}" class="btn btn-primary mr-3">S'inscrire</a>
                         {% endif %}
                     {% endif %}
                 </div>
             </div>
         </div>
-
-        {{ include('lecon/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_PROF') %}
+            {{ include('lecon/_delete_form.html.twig') }}
+        {% endif %}
     </div>
 {% endblock %}
 
